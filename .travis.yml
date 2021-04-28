@@ -16,10 +16,12 @@ env:
 matrix:
     fast_finish: true
     include:
-        - rust: 1.10.0 # minimum Rust version
-          script: # don't run tests, since dev-dependencies don't build on 1.10
+        - rust: 1.31.0 # minimum Rust version
+          script:
               - cargo build --no-default-features
+              - cargo test --no-default-features
               - cargo build
+              - cargo test
 
         # with sudo the worker has avx2 support
         - rust: nightly
